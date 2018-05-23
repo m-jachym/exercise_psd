@@ -1,0 +1,292 @@
+html, body {
+    margin: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url('assets/bg_image.jpg') no-repeat center center fixed;
+    background-size: 135%;
+    background-position: top;
+    /* background positioning - like in design - is possible, but probably the easiest way is to cut bgImage in PS (or even paint ;)) */
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    font-size: 18px;
+}
+
+/* ---HEADER--- */
+
+#hamburger {
+    position: absolute;
+    right: 0;
+    height: 40px;
+    display: none;
+}
+.iks {
+    content: url('assets/iks.svg');
+    padding-right: 30px !important;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 100px;
+}
+#logo {
+    height: 50px;
+}
+ul {
+    padding: 0;
+}
+ul li {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 17px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+ul li:nth-child(4) {
+    border: solid 2px white;
+    border-radius: 10px;
+    margin-left: 25px;
+    
+}
+ul li:nth-child(4) a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Nav Items effects */
+
+ul li:nth-child(4):hover {
+    background: white;
+    color: black;
+    border-color: white;
+}
+ul li:nth-child(4):hover a {
+    color: black;
+}
+ul li:nth-child(5) {
+    display:none;
+}
+.navItems {
+    text-decoration: none;
+    color: white;
+}
+.navItems::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width .3s;
+}  
+.navItems:hover::after {
+    width: 50%;
+    transition: width .3s;
+} 
+.navItems:focus::after {
+    width: 100%;
+    transition: width .3s;
+}
+
+/* --- MAIN SECTION --- */
+.mainSection {
+    color: black;
+    text-align: center;
+    max-width: 100%;
+    height: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.mainSection h1 {
+    font-weight: 200;
+    font-size: 1.6rem;
+}
+.mainSection h1 span {
+    color: white;
+    font-weight: 600;
+}
+.mainSection ol {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:0px;
+}
+.mainSection ol img {
+    height: 24px;
+    width: 24px;
+    background-color: red;
+}
+.mainSection ol li {
+    width: 27%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* <br> in right positions  */
+.rwdbr {
+    display:none;
+}
+#sqcircle {
+    height: 80px;
+    border-width: 3px;
+    border-color: red;
+    color: red;
+    transition-property: transform;
+    transition-duration: .5s;
+}
+/* Probably the easiest way to rotate onclick is to use jQuery, but i decided
+    to use CSS. The problem is that its rotating while you keep mouse button clicked,
+    but in this case with good timing it looks ok (IMO)  */
+#sqcircle:active {
+    transform: rotate(360deg);
+}
+
+/* --- 2nd part od MAIN SECTION --- */
+
+.footerSection p { 
+    color: white;
+    font-family:  'Open Sans', sans-serif;
+}
+#triangle {
+    width: 0;
+    height: 0;
+    border-top: 45px solid white;
+    border-left: 45px solid white;
+    border-right: 45px solid transparent;
+    border-bottom: 45px solid transparent;
+    border-top-left-radius: 8px;
+    margin: 10px auto -10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(40px) rotate(45deg);
+}
+/* 
+\/\/ simply triangle, but content positioning is strange...
+#triangle {
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 80px solid red; 
+    margin: 0 auto;
+} */
+.more {
+    color:black;
+    font-size: 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    transform: rotate(-45deg) translateY(-27px);
+}
+.moreSmall {
+    display: none;
+    color:black;
+    font-size: 2rem;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 200;
+    transform: rotate(-45deg) translateY(-20px);
+}
+/* --- RWD --- */
+@media (max-width:768px) {
+    /* --- HEADER --- */
+    /* toggling element */
+    .active {
+        display: flex;
+        flex-direction: column;
+        background-color: #001820;
+        z-index: 1;
+        height: 100%;
+        position: fixed;
+    }
+    #hamburger {
+        display:block;
+        height: 20px;
+        padding-top: 30px;
+        padding-right: 25px;
+        z-index: 5;
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+    nav #logo {
+        padding-top:20px;
+        width: 115px;
+        z-index: 5;
+    }
+    ul {
+        display:none;
+        width: 100%;
+        padding-top: 80px; 
+    }
+    ul li {
+        display: block;
+        padding: 30px;
+        margin: 0px auto;
+    }
+    ul li:nth-child(4) {
+        margin: 20px auto;
+        padding: 10px 50px;
+    }
+    ul li:nth-child(5) {
+        display: flex;
+        justify-content: space-around;
+        width: 75%;
+        padding: 35px 0px;
+    }
+    /* --- MAIN SECTION --- */
+    .mainSection h1 {
+        color: white;
+        font-size: 1rem  !important;
+        margin-top: 0px;
+    }
+    #sqcircle {
+        height: 60px;
+        margin: 10px auto;
+    }
+    .mainSection h1 .regularbr {
+        display: none;
+    }
+    .mainSection h1 .rwdbr, .mainSection p .rwdbr {
+        display: block;
+    }
+    .mainSection ol {
+        flex-direction: column;
+        align-items: center;
+    }
+    /* Bottom part of MAIN SECTION */
+    .mainSection .footerSection p {
+        font-size: 0.6rem;
+    }
+    .mainSection .footerSection ol li {
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+    }
+    #triangle {
+    border-top: 30px solid white;
+    border-left: 30px solid white;
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    margin: 0 auto;
+    }
+    .more {
+        display:none;
+    }
+    .moreSmall {
+        display: block;
+    }
+}
+
